@@ -22,7 +22,7 @@ def lambda_handler(event, context):
     
     s3_client.put_object(
         Bucket='doordashprocessed',  # Correct parameter name
-        Key='filtered_data.json',  # Specify a new key for the filtered data
+        Key='delivery_filtered_data.json',  # Specify a new key for the filtered data
         Body=final_string.encode('utf-8')  # Body should be bytes
         )
     
