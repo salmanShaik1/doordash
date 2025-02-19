@@ -1,23 +1,10 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.9
-    commands:
-      - echo "Installing dependencies..."
-      - pip install -r requirements.txt -t lib
-
   build:
     commands:
-      - echo "Optimizing dependencies and zipping deployment package..."
-      - cd lib
-      - find . -name '*.pyc' -delete  # Remove .pyc files to reduce size
-      - zip -r9 ../deployment_package_1.zip *   # Compress with maximum compression
-      - cd ..
-      - zip -g deployment_package_1.zip doordashprocessing.py  # Add main script
-      - echo "Current size of deployment package:"
-      - unzip -l deployment_package_1.zip | tail -n1 | awk '{print $1}'
+      - echo "Zipping deployment package..."
+      - zip -r9 deployment_package_1.zip doordashprocessing.py
 
   post_build:
     commands:
